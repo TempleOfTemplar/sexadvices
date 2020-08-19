@@ -1,0 +1,56 @@
+<div class="search-filters">
+  <div class="filter-group">
+    <label [attr.for]="'category'">Категория</label>
+    <!-- [bindValue]="bindValue"-->
+    <!-- [typeahead]="departmentFilterInput$"-->
+    <ng-select [bindLabel]="'title'"
+               [bindValue]="'title'"
+               [clearable]="true"
+               [clearAllText]="'Очистить'"
+               [formControl]="categoryControl"
+               [hideSelected]="true"
+               [items]="categories$ | async"
+               [labelForId]="'category'"
+               [loadingText]="'Загружается...'"
+               [loading]="categoriesLoading$ | async"
+               [multiple]="true"
+               [notFoundText]="'Ничего не найдено.'"
+               [placeholder]="'Выберите категорию'"
+               [typeToSearchText]="'Начните вводить категорию'"
+               [virtualScroll]="true"
+               class="select">
+
+    </ng-select>
+  </div>
+  <div class="form-group">
+    <label [for]="'items'">Инвентарь</label>
+    <ng-select [bindLabel]="'title'"
+               [bindValue]="'title'"
+               [clearable]="true"
+               [clearAllText]="'Очистить'"
+               [formControl]="itemControl"
+               [hideSelected]="true"
+               [items]="items$ | async"
+               [labelForId]="'items'"
+               [loadingText]="'Загружается...'"
+               [loading]="itemsLoading$ | async"
+               [multiple]="true"
+               [notFoundText]="'Ничего не найдено.'"
+               [placeholder]="'Выберите инвентарь'"
+               [typeToSearchText]="'Начните вводить название предмета'"
+               [virtualScroll]="true"
+               class="select">
+    </ng-select>
+  </div>
+</div>
+<div class="suggestions">
+  <div class="suggestion-row" *ngFor="let suggestion of suggestions$|async">
+    <div class="suggestion-title">
+      {{suggestion.title}}
+    </div>
+    <div class="suggestion-description">
+      {{suggestion.description}}
+    </div>
+  </div>
+</div>
+
